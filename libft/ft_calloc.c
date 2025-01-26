@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 00:40:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 13:35:02 by ioulkhir         ###   ########.fr       */
+/*   Created: 2024/10/22 20:32:00 by ioulkhir          #+#    #+#             */
+/*   Updated: 2024/11/13 13:24:27 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "libft.h"
 
-void	exec_cmd1(t_parsed_data data)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int 		result;
-	char		*args[3];
+	void	*ptr;
+	size_t	total_size;
 
-	args[0] = data.cmd1;
-	args[1] = data.file1;
-	args[2] = NULL;
-    execve(args[0], args, NULL);
-}
-
-void	exec_cmd2(t_parsed_data data)
-{
-	int 		result;
-	char		*args[3];
-
-	args[0] = data.cmd2;
-	args[1] = NULL;
-	args[2] = NULL;
-    result = execve(args[0], args, NULL);
+	total_size = count * size;
+	if (!total_size)
+		return (malloc(total_size));
+	if (total_size / count != size)
+		return (NULL);
+	ptr = malloc(total_size);
+	if (ptr)
+		ft_bzero(ptr, count * size);
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 13:39:03 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 10:19:32 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:09:11 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "parsing/parsing.h"
+#include "libft/libft.h"
 #include "execution/execution.h"
 
 #define READ_IDX 0

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 00:40:06 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 13:35:02 by ioulkhir         ###   ########.fr       */
+/*   Created: 2024/10/22 08:41:55 by ioulkhir          #+#    #+#             */
+/*   Updated: 2024/11/18 13:28:02 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execution.h"
+#include "libft.h"
 
-void	exec_cmd1(t_parsed_data data)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int 		result;
-	char		*args[3];
+	size_t	i;
 
-	args[0] = data.cmd1;
-	args[1] = data.file1;
-	args[2] = NULL;
-    execve(args[0], args, NULL);
-}
-
-void	exec_cmd2(t_parsed_data data)
-{
-	int 		result;
-	char		*args[3];
-
-	args[0] = data.cmd2;
-	args[1] = NULL;
-	args[2] = NULL;
-    result = execve(args[0], args, NULL);
+	i = 0;
+	while (i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		if (!s1[i] || !s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }

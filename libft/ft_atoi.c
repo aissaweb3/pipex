@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_data.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 13:42:59 by ioulkhir         ###   ########.fr       */
+/*   Created: 2024/10/22 11:44:15 by ioulkhir          #+#    #+#             */
+/*   Updated: 2025/01/11 09:14:36 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "libft.h"
 
-t_parsed_data	parse_data(int ac, char **av, char **env)
+int	ft_atoi(const char *str)
 {
-	t_parsed_data	data;
+	unsigned long	result;
+	int				i;
+	int				sign;
 
-	if (ac != 5)
+	result = 0;
+	i = 0;
+	sign = 1;
+	while (str[i] == ' ' || (9 <= str[i] && str[i] <= 13))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		write(2, "Bad Usage !!!\n", 14);
-		write(2, "\t./pipex file1 cmd1 cmd2 file2\n", 31);
-		exit(EXIT_FAILURE);
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	data.cmd1 = get_path(ft_strjoin("/", av[2]), env);
-	data.cmd2 = get_path(ft_strjoin("/", av[3]), env);
-	data.file1 = av[1];
-	data.file2 = av[4];
-	return (data);
+	while (str[i])
+	{
+		if (!('0' <= str[i] && str[i] <= '9'))
+			break ;
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
