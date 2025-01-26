@@ -6,13 +6,13 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:05:08 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 10:12:51 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:58:50 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	create_children(int *cp1, int *cp2, int pipe_fds[2], t_parsed_data data)
+void	create_children(int *cp1, int *cp2, int pipe_fds[2])
 {
     *cp1 = fork();
     *cp2 = -314;

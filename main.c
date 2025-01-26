@@ -12,7 +12,7 @@ int main(int ac, char **av, char **env)
     // pipe
     create_pipe(pipe_fds);
     // children
-    create_children(&child_process1, &child_process2, pipe_fds, data);
+    create_children(&child_process1, &child_process2, pipe_fds);
     // tasks distribution
     if (child_process1 == 0)
         child1(pipe_fds, data);
