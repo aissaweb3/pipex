@@ -9,3 +9,4 @@ all:
 clean:
 	@rm -fr $(NAME)
 	
+fclean: clean
