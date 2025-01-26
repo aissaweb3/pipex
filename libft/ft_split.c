@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:30:51 by ioulkhir          #+#    #+#             */
-/*   Updated: 2024/11/01 08:41:55 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:53:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static char	*ft_create_word(const char *str, char c)
 		i++;
 	}
 	word[i] = 0;
+	ft_decode(word);
 	return (word);
 }
 
@@ -69,12 +70,12 @@ static char	**free_ptr(char **split, int i)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**split;
 	int		i;
 
-	if (!s)
+	if (!ft_encode(s))
 		return (NULL);
 	i = 0;
 	split = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));

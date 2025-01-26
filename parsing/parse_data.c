@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 14:37:18 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:52:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ t_parsed_data	parse_data(int ac, char **av, char **env)
 	}
 	data.cmd1 = ft_split(av[2], ' ');
 	data.cmd1[0] = get_path(ft_strjoin("/", data.cmd1[0]), env);
-	//data.cmd1[2] = NULL;
 	data.cmd2 = ft_split(av[3], ' ');
 	data.cmd2[0] = get_path(ft_strjoin("/", data.cmd2[0]), env);
-	//data.cmd2[2] = NULL;
+	// ft_decode all
 	
 	data.file1 = av[1];
 	data.file2 = av[4];
