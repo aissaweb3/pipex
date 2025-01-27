@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 10:22:39 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:30:17 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_parsed_data	parse_data(int ac, char **av, char **env)
 	t_parsed_data	data;
 
 	if (ac != 5)
-		display_err("Bad Usage !!!\n\t./pipex file1 cmd1 cmd2 file2");
+		display_err("Bad Usage !!!\n\t./pipex infile cmd1 cmd2 outfile");
 	if (env == NULL)
 		display_err("ENV not available");
 	data.cmd1 = ft_split(av[2], ' ');
@@ -32,7 +32,7 @@ t_parsed_data	parse_data(int ac, char **av, char **env)
 	data.cmd2[0] = get_path(ft_strjoin("/", data.cmd2[0]), env);
 	if (data.cmd2[0] == NULL)
 		display_err("Error getting the command path !");
-	data.file1 = av[1];
-	data.file2 = av[4];
+	data.infile = av[1];
+	data.outfile = av[4];
 	return (data);
 }
