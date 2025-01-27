@@ -23,6 +23,6 @@ int main(int ac, char **av, char **env)
     close(pipe_fds[1]);
     wait(NULL);
     wait(NULL);
-    printf("done\n");
+    //printf("done\n");
     return (0);
 }
