@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/28 00:18:56 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/28 00:44:25 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,13 @@ void	free_split(char **split, int i)
 	free(split);
 }
 
-char	*get_path(char *cmd, char **env)
+static char	**get_paths(char **env)
 {
 	char	**paths;
-	char	*path;
 	int		i;
 
 	i = 0;
-	if (env == NULL || cmd == NULL)
-		return (NULL);
-	path = NULL;
 	paths = NULL;
-	if (access((const char *)cmd, X_OK) == 0)
-		return (cmd);
-	if (!ft_strncmp(cmd, "./", 2) || cmd[0] == '/')
-		return (NULL);
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
@@ -48,9 +40,26 @@ char	*get_path(char *cmd, char **env)
 		}
 		i++;
 	}
-	i = 0;
+	return (paths);
+}
+
+char	*get_path(char *cmd, char **env)
+{
+	char	**paths;
+	char	*path;
+	int		i;
+
+	if (env == NULL || cmd == NULL)
+		return (NULL);
+	path = NULL;
+	if (access((const char *)cmd, X_OK) == 0)
+		return (cmd);
+	if (!ft_strncmp(cmd, "./", 2) || cmd[0] == '/')
+		return (NULL);
+	paths = get_paths(env);
 	if (paths == NULL)
 		return (free(cmd), NULL);
+	i = 0;
 	while (paths[i])
 	{
 		path = ft_strjoin(ft_strjoin(paths[i++], "/"), cmd);
@@ -59,7 +68,5 @@ char	*get_path(char *cmd, char **env)
 		free(path);
 		path = NULL;
 	}
-	free_split(paths, i);
-	free(cmd);
-	return (path);
+	return (free_split(paths, i), free(cmd), path);
 }

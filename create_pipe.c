@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:01:32 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 10:22:02 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/28 00:45:45 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	create_pipe(int fds[2])
 {
 	if (pipe(fds) == -1)
-        display_err("Pipe Error");
+		display_err("Pipe Error");
 }
