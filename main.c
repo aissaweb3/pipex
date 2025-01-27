@@ -19,8 +19,8 @@ int main(int ac, char **av, char **env)
     if (child_process2 == 0)
         child2(pipe_fds, data);
     // no leaks
-    close(pipe_fds[READ_IDX]);
-    close(pipe_fds[WRITE_IDX]);
+    close(pipe_fds[0]);
+    close(pipe_fds[1]);
     wait(NULL);
     wait(NULL);
     printf("done\n");
