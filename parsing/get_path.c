@@ -6,19 +6,21 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 19:47:48 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/28 00:18:56 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-static void	free_split(char **split)
+void	free_split(char **split, int i)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	while (split[i])
-		free(split[i++]);
+	j = i;
+	if (split == NULL)
+		return ;
+	while (split[j])
+		free(split[j++]);
 	free(split);
 }
 
@@ -48,17 +50,16 @@ char	*get_path(char *cmd, char **env)
 	}
 	i = 0;
 	if (paths == NULL)
-		return (NULL);
+		return (free(cmd), NULL);
 	while (paths[i])
 	{
 		path = ft_strjoin(ft_strjoin(paths[i++], "/"), cmd);
 		if (access((const char *)path, X_OK) == 0)
 			break ;
-		else
-			path = NULL;
 		free(path);
+		path = NULL;
 	}
-	free_split(paths);
-	//free(cmd);
+	free_split(paths, i);
+	free(cmd);
 	return (path);
 }

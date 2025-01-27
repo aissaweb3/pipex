@@ -1,5 +1,10 @@
 #include "pipex.h"
 
+void    f()
+{
+    system("leaks pipex");
+}
+
 int main(int ac, char **av, char **env)
 {
     t_parsed_data	data;
@@ -7,6 +12,7 @@ int main(int ac, char **av, char **env)
     pid_t			child_process2;
     int				pipe_fds[2];
 
+    //atexit(f);
     // parse
     data = parse_data(ac, av, env);
     // pipe
@@ -23,6 +29,7 @@ int main(int ac, char **av, char **env)
     close(pipe_fds[1]);
     wait(NULL);
     wait(NULL);
-    //printf("done\n");
+	free_split(data.cmd1, 0);
+	free_split(data.cmd2, 0);
     return (0);
 }

@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   dup2_and_close.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 00:16:42 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/28 00:17:58 by ioulkhir         ###   ########.fr       */
+/*   Created: 2025/01/28 00:20:19 by ioulkhir          #+#    #+#             */
+/*   Updated: 2025/01/28 00:28:55 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
-
-#include "parsed_data.h"
 #include "../pipex.h"
 
-t_parsed_data	parse_data(int ac, char **av, char **env);
-char			*get_path(char *cmd, char **env);
-void			display_err(char *str);
-void			free_split(char **split, int i);
+void	dup2_and_close(t_parsed_data data, int from, int to)
+{
+	int	res;
 
-#endif
+	res = dup2(to, from);
+	close(to);
+	if (res == -1)
+	{
+		free_split(data.cmd1, 0);
+		free_split(data.cmd2, 0);
+		perror("dup2");
+		exit(EXIT_FAILURE);
+	}
+}
