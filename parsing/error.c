@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 00:16:42 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 10:19:38 by ioulkhir         ###   ########.fr       */
+/*   Created: 2025/01/27 10:16:05 by ioulkhir          #+#    #+#             */
+/*   Updated: 2025/01/27 10:17:02 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "parsing.h"
 
-#include "parsed_data.h"
-#include "../pipex.h"
-
-t_parsed_data	parse_data(int ac, char **av, char **env);
-char			*get_path(char *cmd, char **env);
-void			display_err(char *str);
-
-#endif
+void	display_err(char *str)
+{
+	write (2, str, ft_strlen(str));
+	write (2, "\n", 1);
+}
