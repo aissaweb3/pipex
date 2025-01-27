@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 10:19:12 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:22:39 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_parsed_data	parse_data(int ac, char **av, char **env)
 	t_parsed_data	data;
 
 	if (ac != 5)
-		display_err("Bad Usage !!!\n\t./pipex file1 cmd1 cmd2 file2\n");
+		display_err("Bad Usage !!!\n\t./pipex file1 cmd1 cmd2 file2");
 	if (env == NULL)
 		display_err("ENV not available");
 	data.cmd1 = ft_split(av[2], ' ');

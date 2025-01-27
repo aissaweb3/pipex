@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:13:31 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 17:29:56 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:22:22 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,5 @@ void	child1(int pipe_fds[2], t_parsed_data data)
 	exec_cmd1(data);
 	close(pipe_fds[READ_IDX]);
 	close(pipe_fds[WRITE_IDX]);
-	write(2, "First command failure\n", 22);
-	exit(EXIT_FAILURE);
+	display_err("First command failure");
 }
