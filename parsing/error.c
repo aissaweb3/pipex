@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:16:05 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 10:17:02 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:13:42 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@ void	display_err(char *str)
 {
 	write (2, str, ft_strlen(str));
 	write (2, "\n", 1);
+	exit(EXIT_FAILURE);
 }
