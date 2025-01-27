@@ -1,0 +1,6 @@
+PIPEX:
+	|--> ./pipex										Σ
+	|--> ./pipex @notfoundfile ......	@nff			λ		no such...
+	|--> ./pipex ... ./cmd								λ		check only here
+	|--> ./pipex ... ./a.out							λ		check only here
+	|--> ./pipex ... /cat								λ		nothing

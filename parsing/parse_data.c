@@ -6,11 +6,16 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 14:30:17 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:44:41 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+// void	require(void var)
+// {
+
+// }
 
 t_parsed_data	parse_data(int ac, char **av, char **env)
 {
@@ -23,13 +28,13 @@ t_parsed_data	parse_data(int ac, char **av, char **env)
 	data.cmd1 = ft_split(av[2], ' ');
 	if (data.cmd1 == NULL)
 		display_err("Split error");
-	data.cmd1[0] = get_path(ft_strjoin("/", data.cmd1[0]), env);
+	data.cmd1[0] = get_path(data.cmd1[0], env);
 	if (data.cmd1[0] == NULL)
 		display_err("Error getting the command path !");
 	data.cmd2 = ft_split(av[3], ' ');
 	if (data.cmd2 == NULL)
 		display_err("Split error");
-	data.cmd2[0] = get_path(ft_strjoin("/", data.cmd2[0]), env);
+	data.cmd2[0] = get_path(data.cmd2[0], env);
 	if (data.cmd2[0] == NULL)
 		display_err("Error getting the command path !");
 	data.infile = av[1];

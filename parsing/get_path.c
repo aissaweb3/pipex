@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 14:46:42 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:47:48 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ char	*get_path(char *cmd, char **env)
 		return (NULL);
 	path = NULL;
 	paths = NULL;
+	if (access((const char *)cmd, X_OK) == 0)
+		return (cmd);
+	if (!ft_strncmp(cmd, "./", 2) || cmd[0] == '/')
+		return (NULL);
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
@@ -45,11 +49,9 @@ char	*get_path(char *cmd, char **env)
 	i = 0;
 	if (paths == NULL)
 		return (NULL);
-	if (access((const char *)cmd, X_OK) == 0)
-		return (cmd);
 	while (paths[i])
 	{
-		path = ft_strjoin(paths[i++], cmd);
+		path = ft_strjoin(ft_strjoin(paths[i++], "/"), cmd);
 		if (access((const char *)path, X_OK) == 0)
 			break ;
 		else
