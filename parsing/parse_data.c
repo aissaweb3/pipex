@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 19:44:41 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 20:06:52 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ t_parsed_data	parse_data(int ac, char **av, char **env)
 		display_err("Error getting the command path !");
 	data.infile = av[1];
 	data.outfile = av[4];
+	data.env = env;
 	return (data);
 }

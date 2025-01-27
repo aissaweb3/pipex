@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 10:13:31 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/27 19:56:55 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 20:06:15 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	child1(int pipe_fds[2], t_parsed_data data)
 	}
 	dup2(fd_in, STDIN_FILENO); // protect
 	close(fd_in);
-	exec_cmd1(data);
+	execve(data.cmd1[0], data.cmd1, data.env);
 	display_err("First command failure");
 }

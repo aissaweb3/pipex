@@ -3,7 +3,6 @@ NAME = pipex
 
 # Source files and Vars
 SRC = \
-	execution/execute.c \
 	libft/ft_decode.c  libft/ft_encode.c  libft/ft_split.c libft/ft_strdup.c \
 	libft/ft_strlen.c libft/ft_strncmp.c libft/ft_strjoin.c libft/ft_strlcat.c libft/ft_strlcpy.c \
 	parsing/parse_data.c parsing/get_path.c parsing/error.c \
@@ -11,7 +10,7 @@ SRC = \
 	main.c
 
 OBJ = $(SRC:.c=.o)
-INC = parsing/parsed_data.h parsing/parsing.h execution/execution.h libft/libft.h pipex.h
+INC = parsing/parsed_data.h parsing/parsing.h libft/libft.h pipex.h
 
 # Compilation
 CC = cc
@@ -30,10 +29,10 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -fr $(OBJ)
-	@echo "cleaning..."
+	@echo "[cleaning object files...]"
 	
 fclean: clean
 	@rm -fr $(NAME)
-	@echo "cleaning..."
+	@echo "[cleaning executable...]"
 
 re: fclean all
