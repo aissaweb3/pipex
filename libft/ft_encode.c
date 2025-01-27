@@ -26,7 +26,10 @@ char	*ft_encode(char *s)
 		if (s[i] == ' ' && open_quote == 1)
 			s[i] = 3;
 		if (s[i] == '\'')
+		{
 			open_quote *= -1;
+			s[i] = ' ';
+		}
 		i++;
 	}
 	return (s);
