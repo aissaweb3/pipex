@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 00:30:29 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/26 17:48:28 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:25:09 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*get_path(char *cmd, char **env)
 	i = 0;
 	if (paths == NULL)
 		return (NULL);
+	if (access((const char *)cmd, X_OK) == 0)
+		return (cmd);
 	while (paths[i])
 	{
 		path = ft_strjoin(paths[i++], cmd);
