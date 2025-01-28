@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:46:19 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/28 00:47:14 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/28 00:54:59 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int ac, char **av, char **env)
 	int				pipe_fds[2];
 
 	data = parse_data(ac, av, env);
-	create_pipe(pipe_fds);
-	create_children(&child_process1, &child_process2, pipe_fds);
+	create_pipe(pipe_fds, data);
+	create_children(&child_process1, &child_process2, pipe_fds, data);
 	if (child_process1 == 0)
 		child1(pipe_fds, data);
 	if (child_process2 == 0)
