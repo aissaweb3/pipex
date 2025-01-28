@@ -6,7 +6,7 @@
 /*   By: ioulkhir <ioulkhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:46:19 by ioulkhir          #+#    #+#             */
-/*   Updated: 2025/01/28 00:54:59 by ioulkhir         ###   ########.fr       */
+/*   Updated: 2025/01/28 01:01:08 by ioulkhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	main(int ac, char **av, char **env)
 		child2(pipe_fds, data);
 	close(pipe_fds[0]);
 	close(pipe_fds[1]);
-	wait(NULL);
-	wait(NULL);
 	free_split(data.cmd1, 0);
 	free_split(data.cmd2, 0);
 	return (0);
